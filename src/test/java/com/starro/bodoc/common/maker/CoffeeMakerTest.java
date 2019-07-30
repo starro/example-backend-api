@@ -33,7 +33,7 @@ import java.util.Optional;
 @Slf4j
 public class CoffeeMakerTest {
 
-	@Test
+//	@Test
 	@SneakyThrows
 	public void t01_make() {
 		for (Target target : ImmutableList.of(Target.builder().clazz(Comment.class).author("lucas")
