@@ -1,0 +1,59 @@
+package com.lucas.sample.controller;
+
+import com.lucas.sample.form.SampleForm.Request;
+import com.lucas.sample.form.SampleForm.Response;
+import com.lucas.sample.predicate.SamplePredicate;
+import com.lucas.sample.service.SampleService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
+import static com.lucas.sample.mapper.SampleMapper.mapper;
+
+/**
+ * @since       #description.since#
+ * @author      #description.author#
+ * @description sample controller
+ **********************************************************************************************************************/
+@Api(description="#entity.name#")
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("${property.api.end-point}")
+public class SampleController {
+
+	private final SampleService sampleService;
+
+    @ApiOperation("목록")
+    @GetMapping("/samples/pages")
+    public Page<Response.FindAll> getAll(@Valid Request.Find find, @PageableDefault Pageable pageable){
+        return sampleService.getAll(SamplePredicate.search(find), pageable).map(mapper::toFindAll);
+    }
+
+    @ApiOperation("조회")
+	@GetMapping("/samples/{sampleId}")
+	public Response.FindOne get(@PathVariable Long sampleId){
+		return mapper.toFindOne(sampleService.get(sampleId));
+	}
+
+	@ApiOperation("등록")
+	@PostMapping("/samples")
+	public Response.FindOne add(@Valid @RequestBody Request.Add add){
+		return mapper.toFindOne(sampleService.add(mapper.toSample(add)));
+	}
+
+	@ApiOperation("수정")
+	@PutMapping("/samples/{sampleId}")
+	public Response.FindOne modify(@PathVariable Long sampleId, @Valid @RequestBody Request.Modify modify){
+		return mapper.toFindOne(sampleService.modify(sampleId, mapper.toSample(modify)));
+	}
+
+	@ApiOperation("삭제")
+	@DeleteMapping("/samples/{sampleId}")
+	public void remove(@PathVariable Long sampleId){
+		sampleService.remove(sampleId);
+	}
+}

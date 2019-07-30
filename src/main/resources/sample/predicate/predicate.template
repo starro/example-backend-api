@@ -1,0 +1,24 @@
+package com.lucas.sample.repository;
+
+import java.util.Optional;
+import com.lucas.sample.form.SampleForm.Request;
+import com.lucas.sample.entity.QSample;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.Predicate;
+
+/**
+ * @since       #description.since#
+ * @author      #description.author#
+ * @description sample predicate
+ **********************************************************************************************************************/
+public class SamplePredicate {
+	
+	public static Predicate search(Request.Find find) {
+
+		QSample 	   sample = QSample.sample;
+		BooleanBuilder builder = new BooleanBuilder();
+        #predicate#
+
+		return builder;
+	}
+}

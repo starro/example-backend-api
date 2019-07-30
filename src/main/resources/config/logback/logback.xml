@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <springProfile name="default,1local">
+        <appender name="dailyRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <append>true</append>
+            <prudent>true</prudent>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>C:\projects\example\workspace\logs\example-backend-api.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <maxHistory>10</maxHistory>
+            </rollingPolicy>
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>DEBUG</level>
+            </filter>
+            <encoder>
+                <pattern>%d{yyyy:MM:dd HH:mm:ss.SSS} %-5level --- [%thread] %logger{35} : %msg %n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="jdbc"                       level="DEBUG" />
+        <logger name="org.springframework.web"    level="DEBUG" />
+        <logger name="org.springframework.client" level="DEBUG" />
+        <logger name="rg.springframework"         level="DEBUG" />
+    </springProfile>
+
+    <springProfile name="dev">
+        <appender name="dailyRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <append>true</append>
+            <prudent>true</prudent>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>/home/diquest/logs/example-backend-api/example-backend-api.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <maxHistory>10</maxHistory>
+            </rollingPolicy>
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>DEBUG</level>
+            </filter>
+            <encoder>
+                <pattern>%d{yyyy:MM:dd HH:mm:ss.SSS} %-5level --- [%thread] %logger{35} : %msg %n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="jdbc"           level="OFF"/>
+        <logger name="jdbc.sqltiming" level="OFF"/>
+    </springProfile>
+
+    <springProfile name="prod">
+        <appender name="dailyRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <append>true</append>
+            <prudent>true</prudent>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>/home/diquest/logs/example-backend-api/example-backend-api.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <maxHistory>10</maxHistory>
+            </rollingPolicy>
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>DEBUG</level>
+            </filter>
+            <encoder>
+                <pattern>%d{yyyy:MM:dd HH:mm:ss.SSS} %-5level --- [%thread] %logger{35} : %msg %n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="jdbc"           level="OFF"/>
+        <logger name="jdbc.sqltiming" level="OFF"/>
+    </springProfile>
+
+    <logger name="com.diquest"                         level="DEBUG"/>
+    <logger name="org.springframework.web"             level="INFO" />
+    <logger name="org.springframework.web.servlet.mvc" level="WARN" />
+    <logger name="springfox.documentation"             level="WARN" />
+    <logger name="jdbc.sqlonly"                        level="WARN" />
+    <logger name="jdbc.sqltiming"                      level="INFO" />
+    <logger name="jdbc.audit"                          level="WARN" />
+    <logger name="jdbc.resultset"                      level="WARN" />
+    <logger name="jdbc.resultsettable"                 level="WARN" />
+    <logger name="jdbc.connection"                     level="WARN" />
+
+    <root level="INFO">
+        <appender-ref ref="dailyRollingFileAppender" />
+    </root>
+</configuration>

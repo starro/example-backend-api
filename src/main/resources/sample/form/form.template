@@ -1,0 +1,78 @@
+package com.lucas.sample.form;
+
+import com.lucas.common.engine.validator.form.date.DateValidator;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.*;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.PastOrPresent;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.math.BigDecimal;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
+import javax.validation.constraints.Digits;
+
+/**
+ * @since       #description.since#
+ * @author      #description.author#
+ * @description sample form
+ **********************************************************************************************************************/
+public class SampleForm {
+
+	public static class Request {
+
+		@Getter
+		@Setter
+		@Builder
+		@ToString
+		@NoArgsConstructor
+		@AllArgsConstructor
+		public static class Find {#request.find#
+		}
+
+		@Getter
+		@Setter
+		@Builder
+		@ToString
+		@NoArgsConstructor
+		@AllArgsConstructor
+		public static class Add {#request.add#
+		}
+
+		@Getter
+		@Setter
+		@Builder
+		@ToString
+		@NoArgsConstructor
+		@AllArgsConstructor
+		public static class Modify {#request.modify#
+		}
+	}
+	
+	public static class Response {
+		
+		@Data
+		public static class FindAll {#response.findall#
+
+            @ApiModelProperty(value="등록일시")
+            private LocalDateTime createdAt;
+
+            @ApiModelProperty(value="수정일시")
+            private LocalDateTime updatedAt;
+		}
+		
+		@Data
+		public static class FindOne {#response.findone#
+
+            @ApiModelProperty(value="등록일시")
+            private LocalDateTime createdAt;
+
+            @ApiModelProperty(value="수정일시")
+            private LocalDateTime updatedAt;
+		}
+	}
+}

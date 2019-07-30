@@ -1,0 +1,4 @@
+
+
+            @ApiModelProperty(value="#form.description#"#form.required#)#form.validation#
+            private %s %s;

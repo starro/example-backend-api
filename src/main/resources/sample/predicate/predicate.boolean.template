@@ -1,0 +1,2 @@
+
+        Optional.ofNullable(find.get%s()).ifPresent(p -> builder.and(%s.%s.eq(p)));

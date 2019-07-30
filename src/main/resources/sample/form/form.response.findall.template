@@ -1,0 +1,4 @@
+
+
+            @ApiModelProperty(value="#form.description#")
+            private %s %s;

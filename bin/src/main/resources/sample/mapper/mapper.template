@@ -1,0 +1,29 @@
+package com.lucas.sample.mapper;
+
+import com.lucas.sample.entity.Sample;
+import org.mapstruct.*;
+import org.mapstruct.factory.Mappers;
+import com.lucas.sample.form.SampleForm.Request;
+import com.lucas.sample.form.SampleForm.Response;
+
+/**
+ * @since       #description.since#
+ * @author      #description.author#
+ * @description sample mapper
+ **********************************************************************************************************************/
+@Mapper(unmappedTargetPolicy=ReportingPolicy.IGNORE)
+public interface SampleMapper {
+
+    SampleMapper mapper = Mappers.getMapper(SampleMapper.class);
+
+    Sample toSample(         Request.Add    form);
+    Sample toSample(Long id, Request.Modify form);
+
+    Response.FindOne toFindOne(Sample entity);
+    Response.FindAll toFindAll(Sample entity);
+
+    @Mappings({
+         @Mapping(target="createdAt", ignore=true)
+    })
+    Sample modify(Sample source, @MappingTarget Sample target);
+}
