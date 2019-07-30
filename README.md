@@ -201,32 +201,32 @@
   * /src/main/java     : 공통, 비지니스 로직를 모두 포함하는 영역
   * /src/main/resource : 외부 설정 영역
   * /src/test/java     : 테스트 영역(테스트케이스는 /src/main/java/com.lucas... 의 테스트 대상 소스의 패키지를 따라간다.)
-    * ex. 대상 : com.lucas.sample.controller.PostController, 테스트케이스 : com.lucas.sample.PostTest, com.lucas.sample.PostHelper
+    * ex. 대상 : com.starro.bodoc.sample.controller.PostController, 테스트케이스 : com.starro.bodoc.sample.PostTest, com.starro.bodoc.sample.PostHelper
   ## 패키지 구조   
   | 패키지 | 설명 |
   |  --------                           |  --------                                               |
   |  com.lucas.common                   | 공통 패키지(비니지스 로직이 포함되지 않는 상위 영역 ex. aop, config..) |
-  |  com.lucas.sample                   | 샘플 패키지(기본 CRUD)                                      |
+  |  com.starro.bodoc.sample                   | 샘플 패키지(기본 CRUD)                                      |
   |  com.lucas.프로젝트                 | 비지니스 로직 영역                                  |
   |  com.lucas.프로젝트.common          | 비지니스 공통 영역                                  |
   
   ## 기능별 이하 패키지 구조
   | 패키지 | 설명 |
   |  --------                           |  --------                            |
-  | com.lucas.sample.entity     | 엔티티 영역(Entity)                         |
-  | com.lucas.sample.form       | 폼 영역(Dto)                         |
-  | com.lucas.sample.mapper     | 매퍼 영역(Mapper)                                |
-  | com.lucas.sample.controller | 컨트롤러 영역(Controller)                        |
-  | com.lucas.sample.service    | 서비스 영역(Service)                             |
-  | com.lucas.sample.enumerate  | 코드(열거형) 영역 |
-  | com.lucas.sample.predicate | 조건 영역(Predicate) |
-  | com.lucas.sample.repository | 레파지토리 영역(Repository, Querydsl) |
+  | com.starro.bodoc.sample.entity     | 엔티티 영역(Entity)                         |
+  | com.starro.bodoc.sample.form       | 폼 영역(Dto)                         |
+  | com.starro.bodoc.sample.mapper     | 매퍼 영역(Mapper)                                |
+  | com.starro.bodoc.sample.controller | 컨트롤러 영역(Controller)                        |
+  | com.starro.bodoc.sample.service    | 서비스 영역(Service)                             |
+  | com.starro.bodoc.sample.enumerate  | 코드(열거형) 영역 |
+  | com.starro.bodoc.sample.predicate | 조건 영역(Predicate) |
+  | com.starro.bodoc.sample.repository | 레파지토리 영역(Repository, Querydsl) |
 
   
   ## 기능별 이하 테스트 패키지 구조
   | 패키지 | 설명 |
   |  --------                           |  --------                            |
-  | com.lucas.sample   | 테스트 케이스 영역(Test, Helper) |
+  | com.starro.bodoc.sample   | 테스트 케이스 영역(Test, Helper) |
 
   ## REST API 디자인
   | 기능         | 함수명     | API                                               | 
@@ -265,7 +265,7 @@
 ```java
 /**   
  * @since       2018.10.02
- * @author      lucas
+ * @author      starro
  * @description sample form
  **********************************************************************************************************************/
 public class SampleForm {
@@ -394,7 +394,7 @@ public class SampleForm {
 ```java
 /**   
  * @since       2018.10.03
- * @author      lucas
+ * @author      starro
  * @description sample mapper  
  **********************************************************************************************************************/
 @Mapper(unmappedTargetPolicy=ReportingPolicy.IGNORE)
@@ -428,7 +428,7 @@ public interface SampleMapper {
 ```java
 /**   
  * @since       2018.10.03
- * @author      lucas
+ * @author      starro
  * @description sample controller
  **********************************************************************************************************************/
 @Api(description="샘플")
@@ -485,7 +485,7 @@ public class SampleController {
 ```java
 /**
  * @since       2018.10.02
- * @author      lucas
+ * @author      starro
  * @description sample
  **********************************************************************************************************************/
 @Getter
@@ -524,7 +524,7 @@ public class Sample extends Base {
 ```java
 /**
  * @since       2018.10.03
- * @author      lucas
+ * @author      starro
  * @description sample service
  **********************************************************************************************************************/
 @Service
@@ -577,7 +577,7 @@ public class SampleService {
 ```java
 /**   
  * @since       2018.10.03
- * @author      lucas
+ * @author      starro
  * @description sample repository 
  **********************************************************************************************************************/
 @Repository
@@ -587,7 +587,7 @@ public interface SampleRepository extends JpaRepository<Sample, Long>, QuerydslP
 
 /**   
  * @since       2018.10.03
- * @author      lucas
+ * @author      starro
  * @description sample repository querydsl
  **********************************************************************************************************************/
 public interface SampleCustomRepository {
@@ -597,7 +597,7 @@ public interface SampleCustomRepository {
 
 /**    
  * @since       2018.10.03
- * @author      lucas
+ * @author      starro
  * @description sample repository impl 
  **********************************************************************************************************************/
 public class SampleRepositoryImpl extends QuerydslRepositorySupport implements SampleCustomRepository {
@@ -632,7 +632,7 @@ public class SampleRepositoryImpl extends QuerydslRepositorySupport implements S
 ```java
 /**    
  * @since       2018.10.03
- * @author      lucas
+ * @author      starro
  * @description sample predicate 
  **********************************************************************************************************************/
 public class PostPredicate {
@@ -671,7 +671,7 @@ public class PostPredicate {
 ```java
 /**
  * @since       2018.10.03
- * @author      lucas
+ * @author      starro
  * @description sample helper
  **********************************************************************************************************************/
 public class SampleHelper extends TestHelper {
@@ -750,7 +750,7 @@ public class SampleHelper extends TestHelper {
 ```java
 /**
  * @since       2018.10.03
- * @author      lucas
+ * @author      starro
  * @description sample test
  **********************************************************************************************************************/
 @SpringBootTest    

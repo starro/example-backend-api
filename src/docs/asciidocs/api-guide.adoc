@@ -1,5 +1,4 @@
 = EXAMPLE BACKEND API GUIDE
-niceday.lucas@gmail.com;
 :doctype: book
 :icons: font
 :source-highlighter: highlightjs

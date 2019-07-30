@@ -1,8 +1,8 @@
-package com.lucas.sample;
+package com.starro.bodoc.sample;
 
 import com.lucas.common.engine.test.TestHelper;
-import com.lucas.sample.form.SampleForm.Request;
-import com.lucas.sample.form.SampleForm.Response;
+import com.starro.bodoc.sample.form.SampleForm.Request;
+import com.starro.bodoc.sample.form.SampleForm.Response;
 import lombok.SneakyThrows;
 import static com.lucas.common.engine.helper.model.ObjectHelper.toInstance;
 import static com.lucas.common.engine.helper.model.ObjectHelper.toJson;

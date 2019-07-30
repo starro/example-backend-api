@@ -1,8 +1,8 @@
-package com.lucas.sample.repository;
+package com.starro.bodoc.sample.repository;
 
 import java.util.Optional;
-import com.lucas.sample.form.SampleForm.Request;
-import com.lucas.sample.entity.QSample;
+import com.starro.bodoc.sample.form.SampleForm.Request;
+import com.starro.bodoc.sample.entity.QSample;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
 

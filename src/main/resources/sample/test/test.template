@@ -1,12 +1,12 @@
-package com.lucas.sample;
+package com.starro.bodoc.sample;
 
 import com.lucas.common.engine.test.SuperTest;
-import com.lucas.sample.form.SampleForm.Request;
+import com.starro.bodoc.sample.form.SampleForm.Request;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.transaction.annotation.Transactional;
-import static com.lucas.sample.SampleHelper.*;
+import static com.starro.bodoc.sample.SampleHelper.*;
 
 /**
  * @since       #description.since#

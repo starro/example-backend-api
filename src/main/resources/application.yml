@@ -17,7 +17,7 @@
 # 6. datasource
 #    - h2
 #        driver-class-name: org.h2.Driver                               |   net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-#        url              : jdbc:h2:file:~/lucas;DB_CLOSE_ON_EXIT=FALSE | jdbc:log4jdbc:h2:file:~/lucas;DB_CLOSE_ON_EXIT=FALSE
+#        url              : jdbc:h2:file:~/bodoc;DB_CLOSE_ON_EXIT=FALSE | jdbc:log4jdbc:h2:file:~/bodoc;DB_CLOSE_ON_EXIT=FALSE
 #    - postgres
 #        driver-class-name: org.postgresql.Driver                     | net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 #        url              : jdbc:postgresql://localhost:5432/postgres | jdbc:log4jdbc:postgresql://localhost:5432/postgres
@@ -31,13 +31,13 @@ property:
         end-point : /api
     swagger:
         info:
-            title  : lucas
-            desc   : lucas-api
+            title  : bodoc
+            desc   : bodoc
             version: v0.0.1
         contact:
-            name   : lucas
-            url    : https://gitlab.com/niceday.lucas
-            email  : niceday.lucas@gmail.com
+            name   : starroapp
+            url    :
+            email  :
 
 
 #default
@@ -87,7 +87,7 @@ spring:
         location: classpath:config/banner/default
     datasource:
 #        driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-#        url              : jdbc:log4jdbc:h2:file:~/lucas;DB_CLOSE_ON_EXIT=FALSE
+#        url              : jdbc:log4jdbc:h2:file:~/bodoc;DB_CLOSE_ON_EXIT=FALSE
         driver-class-name: org.h2.Driver
         url              : jdbc:h2:~/test;AUTO_SERVER=TRUE
         tomcat:
@@ -105,7 +105,7 @@ spring:
         location: classpath:config/banner/dev
     datasource:
         driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-        url              : jdbc:log4jdbc:h2:file:~/lucas;DB_CLOSE_ON_EXIT=FALSE
+        url              : jdbc:log4jdbc:h2:file:~/bodoc;DB_CLOSE_ON_EXIT=FALSE
         username         : sa
         password         :
         tomcat:
@@ -123,7 +123,7 @@ spring:
         location: classpath:config/banner/prod
     datasource:
         driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-        url              : jdbc:log4jdbc:h2:file:~/lucas;DB_CLOSE_ON_EXIT=FALSE
+        url              : jdbc:log4jdbc:h2:file:~/bodoc;DB_CLOSE_ON_EXIT=FALSE
         username         : sa
         password         :
         tomcat:

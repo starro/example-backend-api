@@ -1,4 +1,4 @@
-package com.lucas.sample.form;
+package com.starro.bodoc.sample.form;
 
 import com.lucas.common.engine.validator.form.date.DateValidator;
 import io.swagger.annotations.ApiModelProperty;

@@ -1,10 +1,10 @@
-package com.lucas.sample.mapper;
+package com.starro.bodoc.sample.mapper;
 
-import com.lucas.sample.entity.Sample;
+import com.starro.bodoc.sample.entity.Sample;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
-import com.lucas.sample.form.SampleForm.Request;
-import com.lucas.sample.form.SampleForm.Response;
+import com.starro.bodoc.sample.form.SampleForm.Request;
+import com.starro.bodoc.sample.form.SampleForm.Response;
 
 /**
  * @since       #description.since#

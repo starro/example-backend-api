@@ -1,6 +1,6 @@
-package com.lucas.sample.repository;
+package com.starro.bodoc.sample.repository;
 
-import com.lucas.sample.entity.Sample;
+import com.starro.bodoc.sample.entity.Sample;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;

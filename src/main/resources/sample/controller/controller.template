@@ -1,9 +1,9 @@
-package com.lucas.sample.controller;
+package com.starro.bodoc.sample.api.controller;
 
-import com.lucas.sample.form.SampleForm.Request;
-import com.lucas.sample.form.SampleForm.Response;
-import com.lucas.sample.predicate.SamplePredicate;
-import com.lucas.sample.service.SampleService;
+import com.starro.bodoc.sample.form.SampleForm.Request;
+import com.starro.bodoc.sample.form.SampleForm.Response;
+import com.starro.bodoc.sample.predicate.SamplePredicate;
+import com.starro.bodoc.sample.service.SampleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
-import static com.lucas.sample.mapper.SampleMapper.mapper;
+import static com.starro.bodoc.sample.mapper.SampleMapper.mapper;
 
 /**
  * @since       #description.since#

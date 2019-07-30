@@ -1,0 +1,180 @@
+package com.starro.bodoc.sample.api;
+
+import com.starro.bodoc.common.engine.test.TestHelper;
+import com.starro.bodoc.sample.api.form.SampleForm.Request;
+import com.starro.bodoc.sample.api.form.SampleForm.Response;
+import lombok.SneakyThrows;
+
+import static com.starro.bodoc.common.engine.helper.model.ObjectHelper.toInstance;
+import static com.starro.bodoc.common.engine.helper.model.ObjectHelper.toJson;
+import static com.starro.bodoc.common.engine.helper.model.ObjectHelper.newInstance;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+/**
+ * @since       2018.10.03
+ * @author      starro
+ * @description sample helper
+ **********************************************************************************************************************/
+public class SampleHelper extends TestHelper {
+
+    @SneakyThrows
+    public static void getAll(Request.Find find) {
+        mock.perform(get  ("/api/samples")
+                .content  (toJson(find)))
+                .andExpect(status().isOk())
+                .andDo    (print())
+                .andDo    (
+                        handler.document(
+                                requestFields(
+                                          fieldWithPath("userId"        ).description("사용자아이디").optional()
+                                         ,fieldWithPath("title"         ).description("제목"      ).optional()
+                                         ,fieldWithPath("startCreatedAt").description("시작날짜"   ).optional()
+                                         ,fieldWithPath("endCreatedAt"  ).description("종료날짜"   ).optional()
+                                         ,fieldWithPath("validDateRange").description("날짜유효여부").optional()
+                                )
+                                ,responseFields(
+                                         beneathPath("content")
+                                        ,fieldWithPath("[]"          ).description("샘플"      )
+                                        ,fieldWithPath("[].id"       ).description("샘플일련번호")
+                                        ,fieldWithPath("[].userId"   ).description("사용자아이디")
+                                        ,fieldWithPath("[].title"    ).description("제목"      )
+                                        ,fieldWithPath("[].createdAt").description("등록일시"   )
+                                )
+                        )
+                );
+    }
+
+    @SneakyThrows
+    public static void get(Long sampleId) {
+        mock.perform(get  ("/api/samples/{sampleId}", sampleId))
+                .andExpect(status().isOk())
+                .andDo    (print())
+                .andDo    (
+                        handler.document(
+                                 pathParameters(parameterWithName("sampleId").description("샘플일련번호"))
+                                ,responseFields(
+                                         fieldWithPath("id"       ).description("샘플일련번호")
+                                        ,fieldWithPath("userId"   ).description("사용자아이디")
+                                        ,fieldWithPath("title"    ).description("제목"      )
+                                        ,fieldWithPath("createdAt").description("등록일시"   )
+                                )
+                        )
+                );
+    }
+
+    @SneakyThrows
+    public static Response.FindOne add(Request.Add add) {
+        return toInstance(Response.FindOne.class,
+                mock.perform(post ("/api/samples")
+                        .content  (toJson(add)))
+                        .andExpect(status().isOk())
+                        .andDo    (print())
+                        .andDo    (
+                                handler.document(
+                                        requestFields(
+                                                 fieldWithPath("userId" ).description("사용자아이디")
+                                                ,fieldWithPath("title"  ).description("제목"      )
+                                                ,fieldWithPath("content").description("내용"      )
+                                        )
+                                        ,responseFields(
+                                                 fieldWithPath("id"       ).description("샘플일련번호")
+                                                ,fieldWithPath("userId"   ).description("사용자아이디")
+                                                ,fieldWithPath("title"    ).description("제목"      )
+                                                ,fieldWithPath("createdAt").description("등록일시"   )
+                                        )
+                                )
+                        )
+        );
+    }
+
+    @SneakyThrows
+    public static Response.FindOne modify(Long sampleId, Request.Modify modify) {
+        return toInstance(Response.FindOne.class,
+                mock.perform(put  ("/api/samples/{sampleId}", sampleId)
+                        .content  (toJson(modify)))
+                        .andExpect(status().isOk())
+                        .andDo    (print())
+                        .andDo    (
+                                handler.document(
+                                         pathParameters(parameterWithName("sampleId").description("샘플일련번호"))
+                                        ,requestFields(
+                                                 fieldWithPath("userId" ).description("사용자아이디")
+                                                ,fieldWithPath("title"  ).description("제목"      )
+                                                ,fieldWithPath("content").description("내용"      )
+                                         )
+                                        ,responseFields(
+                                                 fieldWithPath("id"       ).description("샘플일련번호")
+                                                ,fieldWithPath("userId"   ).description("사용자아이디")
+                                                ,fieldWithPath("title"    ).description("제목"      )
+                                                ,fieldWithPath("createdAt").description("등록일시"   )
+                                        )
+                                )
+                        )
+        );
+    }
+
+    @SneakyThrows
+    public static void remove(Long sampleId) {
+        mock.perform(delete("/api/samples/{sampleId}", sampleId))
+                .andExpect (status().isOk())
+                .andDo     (print())
+                .andDo     (
+                        handler.document(
+                                pathParameters(parameterWithName("sampleId").description("샘플일련번호"))
+                        )
+                );
+    }
+
+    @SneakyThrows
+    public static void get_notFound(Long sampleId) {
+        mock.perform(get  ("/api/samples/{sampleId}", sampleId))
+                .andExpect(status().isNotFound())
+                .andDo    (print())
+                .andDo    (
+                        handler.document(
+                                pathParameters(parameterWithName("sampleId").description("샘플일련번호"))
+                        )
+                );
+    }
+
+    @SneakyThrows
+    public static void modify_notFound(Long sampleId, Request.Modify modify) {
+        mock.perform(put  ("/api/samples/{sampleId}", sampleId)
+                .content  (toJson(modify)))
+                .andExpect(status().isNotFound())
+                .andDo    (print())
+                .andDo    (
+                        handler.document(
+                                pathParameters(parameterWithName("sampleId").description("샘플일련번호"))
+                        )
+                );
+    }
+
+    @SneakyThrows
+    public static void remove_notFound(Long sampleId) {
+        mock.perform(delete("/api/samples/{sampleId}", sampleId))
+                .andExpect(status().isNotFound())
+                .andDo    (print())
+                .andDo    (
+                        handler.document(
+                                pathParameters(parameterWithName("sampleId").description("샘플일련번호"))
+                        )
+                );
+    }
+
+    public static Request.Find findSample() {
+        return newInstance(Request.Find.class);
+    }
+
+    public static Request.Add addSample() {
+        return newInstance(Request.Add.class);
+    }
+
+    public static Request.Modify modifySample() {
+        return newInstance(Request.Modify.class);
+    }
+}
