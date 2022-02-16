@@ -29,7 +29,7 @@
 		<io.springfox.version>2.7.0</io.springfox.version>
 		<org.projectlombok.version>1.18.8</org.projectlombok.version>
 		<jackson.dataformat.version>2.9.7</jackson.dataformat.version>
-        <org.postgresql.version>42.1.4</org.postgresql.version>
+        <org.postgresql.version>42.3.3</org.postgresql.version>
 	</properties>
 
 	<dependencies>
